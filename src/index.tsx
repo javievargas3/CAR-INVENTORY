@@ -1,19 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home, Car_Inventory, Contact, About } from './components'
+import './style.css'
+import { Provider } from 'react-redux';
+import { store } from '../src/Redux/store'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const temp_props = "Car Inventory"
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+    <Provider store={store}>
+    <Router>
+      <Switch>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+        <Route exact path="/">
+          <Home title={temp_props}/>
+        </Route>
+        <Route path='/car_inventory'>
+          <Car_Inventory></Car_Inventory>
+        </Route>
+        <Route path='/contact'>
+          <Contact></Contact>
+        </Route>
+        <Route path='/about'>
+          <About></About>
+        </Route>
+
+
+      </Switch>
+    </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
