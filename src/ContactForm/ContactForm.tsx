@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { chooseName, chooseEmail, chooseAddress, choosePhone } from '../Redux/slices/RootSlice';
+import { chooseName, chooseModel, chooseYear, chooseColor } from '../Redux/slices/RootSlice';
 import { Input } from '../components/SharedComponents';
 import { Button } from '@material-ui/core';
 
@@ -14,9 +14,9 @@ interface ContactFormProps {
 
 interface ContactState {
     name: string;
-    email: string;
-    address: string;
-    phone_number: string;
+    model: string;
+    color: string;
+    year: string;
 }
 
 export const ContactForm = (props:ContactFormProps) => {
@@ -38,9 +38,9 @@ export const ContactForm = (props:ContactFormProps) => {
         } else {
             // Dispatch basically updates our state / Redux store
             dispatch(chooseName(data.name));
-            dispatch(chooseEmail(data.email));
-            dispatch(choosePhone(data.phone_number));
-            dispatch(chooseAddress(data.address));
+            dispatch(chooseModel(data.model));
+            dispatch(chooseYear(data.year));
+            dispatch(chooseColor(data.color));
             server_calls.create(store.getState());
             setTimeout( () => {window.location.reload()}, 1000)
         }
@@ -50,20 +50,20 @@ export const ContactForm = (props:ContactFormProps) => {
         <div>
             <form onSubmit = {handleSubmit(onSubmit)}>
                 <div>
-                    <label htmlFor="name">Contact Name</label>
+                    <label htmlFor="name">Car</label>
                     <Input {...register('name')} name="name" placeholder='Name'/>
                 </div>
                 <div>
-                    <label htmlFor="email">Email</label>
-                    <Input {...register('email')} name="email" placeholder='Email'/>
+                    <label htmlFor="model">Model</label>
+                    <Input {...register('model')} name="model" placeholder='model'/>
                 </div>
                 <div>
-                    <label htmlFor="phone_number">Phone Number</label>
-                    <Input {...register('phone_number')} name="phone_number" placeholder='Phone Number'/>
+                    <label htmlFor="year">Year</label>
+                    <Input {...register('year')} name="year" placeholder='year'/>
                 </div>
                 <div>
-                    <label htmlFor="address">Address</label>
-                    <Input {...register('address')} name="address" placeholder='Address'/>
+                    <label htmlFor="color">Color</label>
+                    <Input {...register('color')} name="color" placeholder='color'/>
                 </div>
                 <Button type='submit'>Submit</Button>
             </form>

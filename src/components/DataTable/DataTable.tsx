@@ -11,10 +11,10 @@ import { ContactForm } from '../../ContactForm/ContactForm';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90, hide: true },
-    { field: 'name', headerName: 'Contact Name', flex: 1 },
-    { field: 'email', headerName: 'Email', flex: 1 },
-    { field: 'phone_number', headerName: 'Phone Number', flex: 1 },
-    { field: 'address', headerName: 'Address', flex: 2 },
+    { field: 'name', headerName: 'Car', flex: 1 },
+    { field: 'model', headerName: 'Model', flex: 1 },
+    { field: 'year', headerName: 'Year', flex: 1 },
+    { field: 'color', headerName: 'Color', flex: 2 },
 ];
 
 interface gridData {
@@ -40,22 +40,22 @@ export const DataTable = () => {
 
     let deleteData = () => {
         server_calls.delete(selectionModel);
-        // console.log(gridData.data.id);
+        console.log(gridData.data.id);
         getData();
         setTimeout( () => { window.location.reload(); }, 1000)
     }
 
-    // console.log(gridData.data.id!);
-    // console.log(`testing for data ${contactData}`)
+    console.log(gridData.data.id!);
+    console.log(`testing for data ${contactData}`)
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            <h2>My Contacts</h2>
+            <h2>My Car Collection</h2>
 
         <DataGrid rows={ contactData } columns={ columns } pageSize={ 5 } checkboxSelection={true} 
         onSelectionModelChange={ (item) => {
             setSelectionModel(item)
-						// console.log(item)
+						console.log(item)
           }}
         />
 

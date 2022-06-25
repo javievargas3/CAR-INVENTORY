@@ -222,7 +222,7 @@ export const Car_Inventory = withRouter(( props:Car_InventoryProps ) => {
                     <Typography variant="h6" className={classes.font} noWrap>
                         My Car Inventory
                     </Typography>
-                    <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>Create New Contact</Button>
+                    <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>ADD NEW CAR</Button>
 
                     {/* Dialog Pop Up */}
                     <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby="form-dialog-title">
