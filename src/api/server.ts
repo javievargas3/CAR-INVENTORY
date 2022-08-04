@@ -2,7 +2,7 @@ let token = 'e15d0b14100395466e313394babb5b92d3f18e58d8465da5'
 
 export const server_calls = {
     get: async () => {
-        const response = await fetch(`http://127.0.0.1:5000/api/cars`,{
+        const response = await fetch(`https://car-inventory-flask.herokuapp.com/api/cars`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const server_calls = {
     },
 
     create: async(data: any = {}) => {
-        const response = await fetch(`http://127.0.0.1:5000/api/cars`,{
+        const response = await fetch(`https://car-inventory-flask.herokuapp.com/api/cars`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
